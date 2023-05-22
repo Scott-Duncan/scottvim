@@ -1,0 +1,2 @@
+# scottvim
+Personal neovim distro
