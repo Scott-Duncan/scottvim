@@ -1,4 +1,4 @@
-return {
+local TokyoNight = {
 	-- the colorscheme should be available when starting Neovim
 	"folke/tokyonight.nvim",
 	lazy = false, -- make sure we load this during startup if it is your main colorscheme
@@ -14,10 +14,10 @@ return {
 				-- Value is any valid attr-list value for `:help nvim_set_hl`
 				comments = { italic = true },
 				keywords = { italic = true },
-				functions = {},
+				functions = { bold = true },
 				variables = {},
 				-- Background styles. Can be "dark", "transparent" or "normal"
-				sidebars = "dark", -- style for sidebars, see below
+				sidebars = "transparent", -- style for sidebars, see below
 				floats = "dark", -- style for floating windows
 			},
 			sidebars = { "qf", "help" }, -- Set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`
@@ -40,3 +40,48 @@ return {
 		vim.cmd([[colorscheme tokyonight]])
 	end,
 }
+
+local Kanagawa = {
+
+	"rebelot/kanagawa.nvim",
+	lazy = false, -- make sure we load this during startup if it is your main colorscheme
+	priority = 1000, -- make sure to load this before all the other start plugins
+	config = function()
+		require("kanagawa").setup({
+			compile = false, -- enable compiling the colorscheme
+			undercurl = true, -- enable undercurls
+			commentStyle = { italic = true },
+			functionStyle = {},
+			keywordStyle = { italic = true },
+			statementStyle = { bold = true },
+			typeStyle = {},
+			transparent = true, -- do not set background color
+			dimInactive = false, -- dim inactive window `:h hl-NormalNC`
+			terminalColors = true, -- define vim.g.terminal_color_{0,17}
+			colors = { -- add/modify theme and palette colors
+				palette = {},
+				theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
+			},
+			overrides = function(colors) -- add/modify highlights
+				return {}
+			end,
+			theme = "lotus", -- Load "wave" theme when 'background' option is not set
+			background = { -- map the value of 'background' option to a theme
+				dark = "dragon", -- try "dragon" !
+				light = "lotus",
+			},
+		})
+		vim.cmd([[colorscheme kanagawa]])
+	end,
+}
+
+local MonokaiTasty = {
+	"patstockwell/vim-monokai-tasty",
+	lazy = false, -- make sure we load this during startup if it is your main colorscheme
+	priority = 1000, -- make sure to load this before all the other start plugins
+	config = function()
+		vim.cmd([[colorscheme vim-monokai-tasty]])
+	end,
+}
+
+return TokyoNight
