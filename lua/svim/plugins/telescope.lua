@@ -1,7 +1,7 @@
 local M = {
 	"nvim-telescope/telescope.nvim",
 	"nvim-lua/plenary.nvim",
-	lazy = false,
+	lazy = true,
 	commit = "203bf5609137600d73e8ed82703d6b0e320a5f36",
 	event = "Bufenter",
 	cmd = { "Telescope" },
